@@ -2577,6 +2577,15 @@ private:
 // ================================================================================
 // ================================================================================
 
+/**
+ * @brief A utility class for loading vertex and index data for rendering.
+ * 
+ * This class provides functionality to either manually supply vertex and index data
+ * or load them from an .obj file. It supports generic vertex and index types.
+ * 
+ * @tparam VertexType The type representing a vertex structure.
+ * @tparam IndexType The type representing an index structure, typically `uint16_t` or `uint32_t`.
+ */
 template <typename VertexType, typename IndexType>
 class LoadVertexData {
 public:
@@ -2589,25 +2598,58 @@ public:
     }
 // --------------------------------------------------------------------------------
 
+    /**
+     * @brief Constructs the loader by loading vertex and index data from an .obj file.
+     * 
+     * Parses the specified .obj file to extract vertex positions, texture coordinates,
+     * and colors, and generates a list of unique vertices and indices for rendering.
+     * 
+     * @param objFilePath The path to the .obj file to load.
+     * 
+     * @throws std::invalid_argument If the file path is empty.
+     * @throws std::runtime_error If the .obj file cannot be parsed or loaded.
+     */
     LoadVertexData(const std::vector<VertexType>& vertices, const std::vector<IndexType>& indices)
         : vertices(vertices), indices(indices) {}
 // --------------------------------------------------------------------------------
 
+    /**
+     * @brief Constructs the loader using manually supplied vertex and index data.
+     * 
+     * Initializes the loader with pre-defined vertex and index data, bypassing the need
+     * to load from an .obj file. This is useful for manually defined models.
+     * 
+     * @param vertices A vector of vertices.
+     * @param indices A vector of indices.
+     */
     const std::vector<VertexType>& getVertices() const {
         return vertices;
     }
 // --------------------------------------------------------------------------------
 
+    /**
+     * @brief Retrieves the loaded or supplied vertex data.
+     * 
+     * @return A constant reference to the vector of vertices.
+     */
     const std::vector<IndexType>& getIndices() const {
         return indices;
     }
 // ================================================================================
 private:
-    std::string objFilePath;
-    std::vector<VertexType> vertices;
-    std::vector<IndexType> indices;
+    std::string objFilePath; /**< Path to the .obj file, if applicable. */
+    std::vector<VertexType> vertices; /**< Loaded or manually supplied vertex data. */
+    std::vector<IndexType> indices; /**< Loaded or manually supplied index data. */
 // --------------------------------------------------------------------------------
 
+    /**
+     * @brief Loads vertex and index data from the specified .obj file.
+     * 
+     * Uses the TinyObjLoader library to parse the .obj file. It generates unique vertices
+     * by eliminating duplicates and assigns indices for efficient rendering.
+     * 
+     * @throws std::runtime_error If the .obj file cannot be parsed or loaded.
+     */
     void loadModel() {
         vertices.clear();
         indices.clear();

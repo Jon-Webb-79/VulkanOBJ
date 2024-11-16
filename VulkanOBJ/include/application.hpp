@@ -120,8 +120,7 @@ public:
      * 
      * Specifies the vertex and index buffers to be used in the Vulkan application.
      * 
-     * @param vertices A vector containing vertex data of type VertexType.
-     * @param indices A vector containing index data of type IndexType.
+     * @param vertexData A vector containing vertex data of type VertexType and IndexType
      * @return A reference to this builder for chained calls.
      */
     VulkanApplicationBuilder& setVertexInfo(const LoadVertexData<VertexType, IndexType>& vertexData) {
