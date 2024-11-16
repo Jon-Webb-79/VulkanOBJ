@@ -51,7 +51,7 @@ int main(int argc, const char * argv[]) {
             .setBaseShaderPaths("../../shaders/shader.vert.spv", 
                                 "../../shaders/shader.frag.spv")
             .setTexturePath("../../../data/textures/viking_room.png")
-            .build(1050, 1200, "Vulkan Application", false);
+            .build(1200, 1050, "Vulkan Application", false);
 
         app.run();
 
