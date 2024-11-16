@@ -1,13 +1,13 @@
-EADME.rst
-
-VulkanDepth
-***********
+************
+VulkanOBJ
+************
 
 This application extends an object-oriented approach to the 
 `Vulkan Tutorial <https://vulkan-tutorial.com/>`_ up to the section on 
-Depth Buffering. In addition to the previous features, it now includes 
-depth buffering to correctly render layered textures, ensuring that closer 
-textures appear on top of further ones without aliasing artifacts in overlapping areas.
+Loading Models. In addition to the previous features, it now includes the 
+ability to load 3D models from .obj files. This enhancement allows developers 
+to use custom 3D models in their Vulkan applications, seamlessly integrating 
+with existing features like texture mapping and depth buffering.
 
 .. image:: data/object.png
    :alt: Screenshot of the application implementing texture mapping with depth buffering
@@ -17,21 +17,23 @@ Overview
 ########
 
 This repository serves as an advanced framework for developers building 
-Vulkan-based applications with depth buffering support. Following the Vulkan 
-Tutorial through texture mapping and depth buffering, it provides a foundation 
-for projects requiring accurate 3D rendering with layered depth.
+Vulkan-based applications with support for 3D model loading, texture mapping, 
+and depth buffering. It builds upon the Vulkan Tutorial through texture 
+mapping and depth buffering, while adding the ability to load models from 
+.obj files for accurate 3D rendering.
 
 **Current Features:**
 
+- **3D Model Loading:** Supports loading of .obj files using the TinyObjLoader library, enabling custom 3D models.
 - **Depth Buffering:** Implements depth buffering to resolve layering and 
   overlap artifacts, ensuring correct rendering order for layered textures.
 - **Texture Mapping:** Supports texture loading and sampling using Vulkan's 
   combined image samplers.
 - **Uniform Buffer Objects (UBOs):** Allows real-time updates to transformation 
   matrices for view, model, and projection transformations.
-- **Dynamic Rendering:** Renders rotating textured squares, with support for 
-  dynamic window resizing and zoom adjustments.
-  
+- **Dynamic Rendering:** Renders dynamically loaded textured 3D models, with 
+  support for window resizing and zoom adjustments.
+
 **Additional Features:**
 
 - **Vulkan Memory Management:** Uses Vulkan Memory Allocator (VMA) for efficient 
@@ -53,7 +55,7 @@ for projects requiring accurate 3D rendering with layered depth.
 Development Status
 ##################
 
-The **VulkanTextureDepth** repository is in an active development stage, aimed 
+The **VulkanOBJ** repository is in an active development stage, aimed 
 at both educational and foundational uses. Users are encouraged to expand 
 the codebase with additional features, unit testing, and thread-safety mechanisms 
 as needed.
@@ -72,7 +74,7 @@ This software is distributed under the MIT license.
 Requirements
 ############
 
-The **VulkanTextureDepth** library is developed and tested on macOS and Arch Linux. 
+The **VulkanOBJ** library is developed and tested on macOS and Arch Linux. 
 It requires the following tools and versions:
 
 - `g++ 14.1.1` or `clang 16.0.6` compiler
@@ -94,7 +96,7 @@ To use this repository, follow these steps:
 
    .. code-block:: bash
 
-      git clone https://github.com/Jon-Webb-79/VulkanApplication.git VulkanApplication
+      git clone https://github.com/Jon-Webb-79/VulkanOBJ.git VulkanOBJ
 
 3. Navigate to the appropriate script directory depending on your shell environment 
    (bash or zsh):
@@ -102,10 +104,10 @@ To use this repository, follow these steps:
    .. code-block:: bash
 
       # For bash
-      cd VulkanApplication/scripts/bash 
+      cd VulkanOBJ/scripts/bash 
       
       # For zsh
-      cd VulkanApplication/scripts/zsh 
+      cd VulkanOBJ/scripts/zsh 
 
 4. Build the codebase:
 
@@ -117,11 +119,11 @@ To use this repository, follow these steps:
       # For zsh
       zsh debug.zsh
 
-5. Navigate to `VulkanApplication/build/debug` to run the debug version:
+5. Navigate to `VulkanOBJ/build/debug` to run the debug version:
 
    .. code-block:: bash
 
-      ./VulkanApplication
+      ./VulkanOBJ
 
 6. If all unit tests pass and memory leaks are resolved, you may convert this codebase 
    into a static or dynamic library or incorporate the `.cpp` and `.hpp` files into 
@@ -132,5 +134,5 @@ To use this repository, follow these steps:
    .. code-block:: bash
 
       zsh release.zsh
-      ./VulkanApplication
+      ./VulkanOBJ
 
